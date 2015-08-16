@@ -1,0 +1,12 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'CHImageScroller_Example', :exclusive => true do
+  pod "CHImageScroller", :path => "../"
+end
+
+target 'CHImageScroller_Tests', :exclusive => true do
+  pod "CHImageScroller", :path => "../"
+
+  
+end
