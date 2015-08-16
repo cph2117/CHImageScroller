@@ -1,0 +1,6 @@
+framework module Pods_CHImageScroller_Tests {
+  umbrella header "Pods-CHImageScroller_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

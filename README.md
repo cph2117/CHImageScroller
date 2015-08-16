@@ -9,6 +9,20 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+CHImageScroller requires only 4 lines of code to implement:
+
+The first line should be an array of images that you want presented
+1) let images = NSArray(objects: UIImage(named: "barca")!, UIImage(named: "bayern")!, UIImage(named: "united")!)
+
+The second line initializes the scroller with the array of images and the desired frame (should be full screen)
+2) let imageScroller = CHImageScroller(images: images, frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
+
+In the third, you add the imageScroller as a subview of your current view controller's view'
+3) self.view.addSubview(imageScroller)
+
+In the fourth, you present the imageScroller
+4) imageScroller.presentImagePreview()
+
 ## Requirements
 
 ## Installation

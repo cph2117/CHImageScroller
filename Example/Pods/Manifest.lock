@@ -1,0 +1,14 @@
+PODS:
+  - CHImageScroller (0.1.0)
+
+DEPENDENCIES:
+  - CHImageScroller (from `../`)
+
+EXTERNAL SOURCES:
+  CHImageScroller:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  CHImageScroller: 968afe3f40b47d6c004552e902480b6f809c8795
+
+COCOAPODS: 0.38.2
