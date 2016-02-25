@@ -18,27 +18,41 @@ public class CHImageScroller: UIView, UIScrollViewDelegate {
     var imageViews: NSMutableArray!
     var exitButton: UIButton!
     
-    required public init(images: NSArray, frame: CGRect)
+    required public init(images: NSArray, startingIndex: Int, frame: CGRect)
     {
         super.init(frame: frame)
         self.images = images
         self.imageViews = NSMutableArray()
-        self.backgroundColor = UIColor.blackColor()
-        self.setupScrollView()
+        
+        if !UIAccessibilityIsReduceTransparencyEnabled() {
+            self.backgroundColor = UIColor.clearColor()
+            
+            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            blurEffectView.frame = self.bounds
+            blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+            
+            self.addSubview(blurEffectView)         }
+        else {
+            self.backgroundColor = UIColor.blackColor()
+        }
+        
+        self.setupScrollView(startingIndex)
+        self.alpha = 0.0
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     public func presentImagePreview(){
-        UIView.animateWithDuration(0.3, delay: 0.0, options: .CurveEaseOut, animations: {
+        UIView.animateWithDuration(0.3, delay: 0.0, options: .CurveEaseInOut, animations: {
             self.alpha = 1.0
             }, completion: { finished in
         })
     }
     
-    func setupScrollView(){
+    func setupScrollView(startingIndex: Int){
         self.scrollView = UIScrollView(frame: CGRectMake(0, self.center.y/2, SCREEN_WIDTH, SCREEN_WIDTH))
         self.scrollView.scrollEnabled = true
         self.scrollView.maximumZoomScale = 3.0
@@ -49,6 +63,8 @@ public class CHImageScroller: UIView, UIScrollViewDelegate {
         
         self.addImageViews()
         self.addGestureRecognizers()
+        
+        self.scrollView.contentOffset = CGPointMake(self.bounds.size.width*CGFloat(startingIndex), 0)
     }
     
     func addImageViews() {

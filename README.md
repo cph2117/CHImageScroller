@@ -25,7 +25,7 @@ self.view.addSubview(imageScroller)
 ```
 In the fourth, you present the imageScroller
 ```ruby
-4) imageScroller.presentImagePreview()
+imageScroller.presentImagePreview()
 ```
 ## Requirements
 
