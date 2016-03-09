@@ -99,7 +99,7 @@ public class CHImageScroller: UIView, UIScrollViewDelegate {
     }
     
     public func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
-        let imageIndex = scrollView.contentOffset.y/SCREEN_WIDTH
+        let imageIndex = scrollView.contentOffset.x/SCREEN_WIDTH
         return self.imageViews.objectAtIndex(Int(imageIndex)) as? UIView
     }
     
